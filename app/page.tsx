@@ -1,18 +1,20 @@
 import Hero from "@/components/sections/Hero";
 import Story from "@/components/sections/Story";
+import Details from "@/components/sections/Details";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <Story />
+      <Details />
 
-      {/* Placeholder anchor — Timeline section arrives in Step 4 */}
+      {/* Placeholder anchor — Countdown section arrives next */}
       <section
-        id="timeline"
+        id="countdown-placeholder"
         className="min-h-screen flex items-center justify-center text-champagne/40 text-sm tracking-luxury uppercase"
       >
-        Timeline section — coming in Step 4
+        Countdown section — coming next
       </section>
     </main>
   );
