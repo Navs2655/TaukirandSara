@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Moon, Sparkles, MapPin, UserPlus } from "lucide-react";
-import { downloadNikahVCard } from "@/utils/vcard";
+import { Moon, Sparkles, MapPin, CalendarPlus } from "lucide-react";
+import { downloadNikahCalendar } from "@/utils/calendar";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -134,11 +134,11 @@ export default function Details() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
-        onClick={downloadNikahVCard}
+        onClick={downloadNikahCalendar}
         className="relative z-10 flex items-center gap-2 mt-14 px-7 py-3 font-body text-xs tracking-luxury uppercase text-champagne border border-gold/40 rounded-full hover:border-gold hover:bg-gold/5 transition-colors duration-300"
       >
-        <UserPlus className="w-4 h-4" />
-        Save to Contacts
+        <CalendarPlus className="w-4 h-4" />
+        Add to Calendar
       </motion.button>
     </section>
   );
