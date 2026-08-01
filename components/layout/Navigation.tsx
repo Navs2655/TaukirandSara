@@ -8,7 +8,6 @@ const NAV_ITEMS = [
   { label: "Story", href: "#story" },
   { label: "Timeline", href: "#timeline" },
   { label: "Details", href: "#details" },
-  { label: "RSVP", href: "#rsvp" },
 ];
 
 export default function Navigation() {
