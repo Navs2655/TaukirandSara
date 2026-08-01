@@ -1,8 +1,16 @@
 "use client";
 
+import { useId } from "react";
 import { motion } from "framer-motion";
 
 export default function CrescentMoon() {
+  // Unique ids per instance — prevents duplicate SVG def IDs when this
+  // component renders more than once on the page (Hero + Closing), which
+  // caused incorrect mask rendering on some Android browsers (Samsung Internet).
+  const uid = useId();
+  const gradientId = `moonGradient-${uid}`;
+  const maskId = `crescentMask-${uid}`;
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.85 }}
@@ -22,22 +30,21 @@ export default function CrescentMoon() {
       />
       <svg viewBox="0 0 100 100" className="relative w-full h-full">
         <defs>
-          <radialGradient id="moonGradient" cx="35%" cy="35%" r="65%">
+          <radialGradient id={gradientId} cx="35%" cy="35%" r="65%">
             <stop offset="0%" stopColor="#F7F3EA" />
             <stop offset="100%" stopColor="#C8A24F" />
           </radialGradient>
+          <mask id={maskId} maskUnits="objectBoundingBox">
+            <rect width="100" height="100" fill="white" />
+            <circle cx="62" cy="42" r="34" fill="black" />
+          </mask>
         </defs>
-        {/* Full circle minus an offset circle = crescent */}
-        <mask id="crescentMask">
-          <rect width="100" height="100" fill="white" />
-          <circle cx="62" cy="42" r="34" fill="black" />
-        </mask>
         <circle
           cx="50"
           cy="50"
           r="38"
-          fill="url(#moonGradient)"
-          mask="url(#crescentMask)"
+          fill={`url(#${gradientId})`}
+          mask={`url(#${maskId})`}
         />
       </svg>
     </motion.div>

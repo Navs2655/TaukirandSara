@@ -1,9 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CrescentMoon from "@/components/ui/CrescentMoon";
 import FloatingParticles from "@/components/ui/FloatingParticles";
+import Magnetic from "@/components/ui/Magnetic";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -16,12 +18,23 @@ function fadeUp(delay: number) {
 }
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  // Moon drifts upward slightly slower than the rest of the content as you
+  // scroll through the Hero — a subtle depth cue, not a dramatic effect.
+  const moonY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const moonOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+
   const handleBeginJourney = () => {
     document.getElementById("story")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6"
     >
@@ -37,7 +50,9 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl">
-        <CrescentMoon />
+        <motion.div style={{ y: moonY, opacity: moonOpacity }}>
+          <CrescentMoon />
+        </motion.div>
 
         <motion.p
           {...fadeUp(0.9)}
@@ -73,21 +88,23 @@ export default function Hero() {
           Request the honor of your presence at their Nikah
         </motion.p>
 
-        <motion.button
-          {...fadeUp(2.0)}
-          onClick={handleBeginJourney}
-          className="group relative mt-14 px-10 py-4 font-body text-sm tracking-luxury uppercase text-champagne border border-gold/40 rounded-full overflow-hidden transition-colors duration-500 hover:border-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
-        >
-          <span
-            className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(200,162,79,0.4) 0%, rgba(200,162,79,0) 70%)",
-            }}
-            aria-hidden="true"
-          />
-          <span className="relative">Begin Journey</span>
-        </motion.button>
+        <Magnetic>
+          <motion.button
+            {...fadeUp(2.0)}
+            onClick={handleBeginJourney}
+            className="group relative mt-14 px-10 py-4 font-body text-sm tracking-luxury uppercase text-champagne border border-gold/40 rounded-full overflow-hidden transition-colors duration-500 hover:border-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
+          >
+            <span
+              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(200,162,79,0.4) 0%, rgba(200,162,79,0) 70%)",
+              }}
+              aria-hidden="true"
+            />
+            <span className="relative">Begin Journey</span>
+          </motion.button>
+        </Magnetic>
       </div>
 
       {/* Scroll cue */}

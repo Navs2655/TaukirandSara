@@ -42,9 +42,32 @@ body {
   }
 }
 
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-1%, 1%); }
+  40% { transform: translate(1%, -1%); }
+  50% { transform: translate(-1%, -1%); }
+  60% { transform: translate(1%, 1%); }
+  70% { transform: translate(-1%, 1%); }
+  80% { transform: translate(1%, -1%); }
+  90% { transform: translate(-1%, -1%); }
+}
+.animate-grain {
+  animation: grain 1s steps(6) infinite;
+}
+
 .text-gradient-gold {
   background: linear-gradient(135deg, #c8a24f 0%, #f7e7c1 50%, #c8a24f 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
+  color: #c8a24f; /* fallback for browsers without background-clip:text support */
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-gradient-gold {
+    color: transparent;
+  }
 }

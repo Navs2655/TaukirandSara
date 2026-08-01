@@ -5,6 +5,9 @@ import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Navigation from "@/components/layout/Navigation";
 import InvitationGate from "@/components/layout/InvitationGate";
 import GlobalStarField from "@/components/layout/GlobalStarField";
+import Preloader from "@/components/layout/Preloader";
+import FilmGrain from "@/components/ui/FilmGrain";
+import AmbientAudioToggle from "@/components/ui/AmbientAudioToggle";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -40,11 +43,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${amiri.variable}`}>
       <body className="font-body bg-background text-champagne antialiased">
+        <Preloader />
+        <FilmGrain />
         <SmoothScrollProvider>
           <GlobalStarField />
           <InvitationGate navigation={<Navigation />}>
             {children}
           </InvitationGate>
+          <AmbientAudioToggle />
         </SmoothScrollProvider>
       </body>
     </html>

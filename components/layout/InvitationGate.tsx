@@ -2,6 +2,7 @@
 
 import { useState, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Magnetic from "@/components/ui/Magnetic";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const SESSION_KEY = "invitationOpened";
@@ -78,20 +79,22 @@ export default function InvitationGate({
               <p className="font-heading text-gold text-lg tracking-wide mb-10">
                 10th November 2026
               </p>
-              <motion.button
-                onClick={handleOpen}
-                whileTap={{ scale: 0.95 }}
-                className="pointer-events-auto relative px-8 py-3.5 font-body text-xs tracking-luxury uppercase text-champagne border border-gold/50 rounded-full"
-                aria-label="Open the invitation"
-              >
-                <motion.span
-                  className="absolute inset-0 rounded-full border border-gold/40"
-                  animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0, 0.6] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                  aria-hidden="true"
-                />
-                <span className="relative">Tap to Open</span>
-              </motion.button>
+              <Magnetic>
+                <motion.button
+                  onClick={handleOpen}
+                  whileTap={{ scale: 0.95 }}
+                  className="pointer-events-auto relative px-8 py-3.5 font-body text-xs tracking-luxury uppercase text-champagne border border-gold/50 rounded-full"
+                  aria-label="Open the invitation"
+                >
+                  <motion.span
+                    className="absolute inset-0 rounded-full border border-gold/40"
+                    animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0, 0.6] }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                    aria-hidden="true"
+                  />
+                  <span className="relative">Tap to Open</span>
+                </motion.button>
+              </Magnetic>
             </motion.div>
 
             {/* Left door */}
