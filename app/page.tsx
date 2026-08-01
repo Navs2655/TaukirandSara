@@ -1,17 +1,16 @@
+import Hero from "@/components/sections/Hero";
+
 export default function Home() {
   return (
     <main>
+      <Hero />
+
+      {/* Placeholder anchor — real Story section arrives in Step 3 */}
       <section
-        id="hero"
-        className="min-h-screen flex flex-col items-center justify-center text-center px-6"
+        id="story"
+        className="min-h-screen flex items-center justify-center text-champagne/40 text-sm tracking-luxury uppercase"
       >
-        <p className="font-arabic text-gold text-2xl mb-4">بِسْمِ اللَّهِ</p>
-        <h1 className="font-heading text-5xl md:text-7xl text-gradient-gold tracking-wide">
-          Taukir <span className="text-champagne/40 mx-4">&amp;</span> Sara
-        </h1>
-        <p className="mt-6 text-champagne/60 tracking-luxury uppercase text-sm">
-          Step 1 scaffold — Hero section arrives in Step 2
-        </p>
+        Story section — coming in Step 3
       </section>
     </main>
   );

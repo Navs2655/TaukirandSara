@@ -1,0 +1,45 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+export default function CrescentMoon() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-24 h-24 md:w-32 md:h-32"
+      aria-hidden="true"
+    >
+      {/* Halo glow */}
+      <div
+        className="absolute inset-0 rounded-full blur-2xl"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(200,162,79,0.35) 0%, rgba(200,162,79,0) 70%)",
+          transform: "scale(2.2)",
+        }}
+      />
+      <svg viewBox="0 0 100 100" className="relative w-full h-full">
+        <defs>
+          <radialGradient id="moonGradient" cx="35%" cy="35%" r="65%">
+            <stop offset="0%" stopColor="#F7F3EA" />
+            <stop offset="100%" stopColor="#C8A24F" />
+          </radialGradient>
+        </defs>
+        {/* Full circle minus an offset circle = crescent */}
+        <mask id="crescentMask">
+          <rect width="100" height="100" fill="white" />
+          <circle cx="62" cy="42" r="34" fill="black" />
+        </mask>
+        <circle
+          cx="50"
+          cy="50"
+          r="38"
+          fill="url(#moonGradient)"
+          mask="url(#crescentMask)"
+        />
+      </svg>
+    </motion.div>
+  );
+}
