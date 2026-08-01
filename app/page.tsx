@@ -1,16 +1,18 @@
 import Hero from "@/components/sections/Hero";
+import Story from "@/components/sections/Story";
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <Story />
 
-      {/* Placeholder anchor — real Story section arrives in Step 3 */}
+      {/* Placeholder anchor — Timeline section arrives in Step 4 */}
       <section
-        id="story"
+        id="timeline"
         className="min-h-screen flex items-center justify-center text-champagne/40 text-sm tracking-luxury uppercase"
       >
-        Story section — coming in Step 3
+        Timeline section — coming in Step 4
       </section>
     </main>
   );
