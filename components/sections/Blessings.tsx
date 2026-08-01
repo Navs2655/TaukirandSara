@@ -64,9 +64,9 @@ export default function Blessings() {
         transition={{ duration: 1, delay: 0.2, ease: EASE }}
         className="relative z-10 font-heading text-xl md:text-2xl text-champagne/70 italic text-center max-w-xl leading-relaxed mb-6"
       >
-        "And of His signs is this: He created for you helpmeets from
-        yourselves that ye might find rest in them, and He ordained between
-        you love and mercy."
+        "And of His signs is that He created for you from yourselves mates
+        that you may find tranquillity in them; and He placed between you
+        affection and mercy."
       </motion.p>
 
       <motion.p
@@ -76,7 +76,7 @@ export default function Blessings() {
         transition={{ duration: 0.9, delay: 0.4 }}
         className="relative z-10 font-body text-gold text-xs tracking-luxury uppercase"
       >
-        Surah Ar-Rum, 30:21
+        Surah Ar-Rum, 30:21 — Sahih International
       </motion.p>
     </section>
   );
