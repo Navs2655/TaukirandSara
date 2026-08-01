@@ -3,6 +3,7 @@
 import { useState, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "@/components/ui/Magnetic";
+import { useAudio } from "@/components/layout/AudioProvider";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const SESSION_KEY = "invitationOpened";
@@ -40,9 +41,12 @@ export default function InvitationGate({
     };
   }, [isOpen]);
 
+  const { play } = useAudio();
+
   const handleOpen = () => {
     setIsOpen(true);
     sessionStorage.setItem(SESSION_KEY, "true");
+    play(); // tied directly to this click, so autoplay restrictions allow it
   };
 
   // Avoid a flash of the gate before we know session state
