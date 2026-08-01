@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Moon, Sparkles, MapPin } from "lucide-react";
+import { Moon, Sparkles, MapPin, UserPlus } from "lucide-react";
+import { downloadNikahVCard } from "@/utils/vcard";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -127,6 +128,18 @@ export default function Details() {
 
         <EventCard event={EVENTS[1]} index={1} />
       </div>
+
+      <motion.button
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
+        onClick={downloadNikahVCard}
+        className="relative z-10 flex items-center gap-2 mt-14 px-7 py-3 font-body text-xs tracking-luxury uppercase text-champagne border border-gold/40 rounded-full hover:border-gold hover:bg-gold/5 transition-colors duration-300"
+      >
+        <UserPlus className="w-4 h-4" />
+        Save to Contacts
+      </motion.button>
     </section>
   );
 }
