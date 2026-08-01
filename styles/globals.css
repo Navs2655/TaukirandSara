@@ -10,6 +10,11 @@
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll instead */
+  /* Prevent Android/Samsung browsers from auto-inflating font size on mobile,
+     which silently widens fixed-width layouts (like the countdown) past the
+     viewport — a behavior iOS Safari doesn't have, hence the iOS/Android gap. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -56,6 +61,14 @@ body {
 }
 .animate-grain {
   animation: grain 1s steps(6) infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 .text-gradient-gold {

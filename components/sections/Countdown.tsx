@@ -23,11 +23,11 @@ function getTimeLeft() {
 
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="flex flex-col items-center gap-2 min-w-[70px] md:min-w-[100px]">
-      <span className="font-heading text-4xl md:text-6xl text-gradient-gold tabular-nums">
+    <div className="flex flex-col items-center gap-1.5 md:gap-2 min-w-[48px] xs:min-w-[64px] md:min-w-[100px]">
+      <span className="font-heading text-2xl xs:text-3xl md:text-6xl text-gradient-gold tabular-nums">
         {String(value).padStart(2, "0")}
       </span>
-      <span className="font-body text-champagne/50 text-[10px] md:text-xs tracking-luxury uppercase">
+      <span className="font-body text-champagne/50 text-[9px] xs:text-[10px] md:text-xs tracking-luxury uppercase">
         {label}
       </span>
     </div>
@@ -81,7 +81,7 @@ export default function Countdown() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.2, ease: EASE }}
-        className="relative flex items-start gap-4 md:gap-10"
+        className="relative flex items-start gap-1 xs:gap-3 md:gap-10 max-w-full overflow-x-auto px-2 no-scrollbar"
       >
         {time ? (
           time.isPast ? (
@@ -91,11 +91,11 @@ export default function Countdown() {
           ) : (
             <>
               <TimeUnit value={time.days} label="Days" />
-              <span className="font-heading text-3xl md:text-5xl text-gold/30 -mt-1">:</span>
+              <span className="font-heading text-lg xs:text-2xl md:text-5xl text-gold/30 -mt-1">:</span>
               <TimeUnit value={time.hours} label="Hours" />
-              <span className="font-heading text-3xl md:text-5xl text-gold/30 -mt-1">:</span>
+              <span className="font-heading text-lg xs:text-2xl md:text-5xl text-gold/30 -mt-1">:</span>
               <TimeUnit value={time.minutes} label="Minutes" />
-              <span className="font-heading text-3xl md:text-5xl text-gold/30 -mt-1">:</span>
+              <span className="font-heading text-lg xs:text-2xl md:text-5xl text-gold/30 -mt-1">:</span>
               <TimeUnit value={time.seconds} label="Seconds" />
             </>
           )
@@ -103,11 +103,11 @@ export default function Countdown() {
           // Static placeholder shown briefly during hydration to avoid layout shift
           <>
             <TimeUnit value={0} label="Days" />
-            <span className="font-heading text-3xl md:text-5xl text-gold/30 -mt-1">:</span>
+            <span className="font-heading text-lg xs:text-2xl md:text-5xl text-gold/30 -mt-1">:</span>
             <TimeUnit value={0} label="Hours" />
-            <span className="font-heading text-3xl md:text-5xl text-gold/30 -mt-1">:</span>
+            <span className="font-heading text-lg xs:text-2xl md:text-5xl text-gold/30 -mt-1">:</span>
             <TimeUnit value={0} label="Minutes" />
-            <span className="font-heading text-3xl md:text-5xl text-gold/30 -mt-1">:</span>
+            <span className="font-heading text-lg xs:text-2xl md:text-5xl text-gold/30 -mt-1">:</span>
             <TimeUnit value={0} label="Seconds" />
           </>
         )}
