@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter, Amiri } from "next/font/google";
 import "@/styles/globals.css";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Navigation from "@/components/layout/Navigation";
+import InvitationGate from "@/components/layout/InvitationGate";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -39,8 +40,9 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${amiri.variable}`}>
       <body className="font-body bg-background text-champagne antialiased">
         <SmoothScrollProvider>
-          <Navigation />
-          {children}
+          <InvitationGate navigation={<Navigation />}>
+            {children}
+          </InvitationGate>
         </SmoothScrollProvider>
       </body>
     </html>

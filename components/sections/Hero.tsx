@@ -59,7 +59,7 @@ export default function Hero() {
 
         <motion.h1
           {...fadeUp(1.4)}
-          className="font-heading text-5xl sm:text-6xl md:text-8xl leading-none"
+          className="font-heading text-4xl xs:text-5xl sm:text-6xl md:text-8xl leading-none"
         >
           <span className="text-gradient-gold">Taukir</span>
           <span className="text-champagne/30 mx-4 md:mx-6 font-light">
