@@ -35,12 +35,12 @@ export default function StarField() {
       canvas!.width = width;
       canvas!.height = height;
 
-      const density = width < 768 ? 90 : 160;
+      const density = width < 768 ? 70 : 130;
       stars = Array.from({ length: density }, () => ({
         x: Math.random() * width,
-        y: Math.random() * height * 0.75, // stars concentrated in upper 3/4
+        y: Math.random() * height,
         radius: Math.random() * 1.1 + 0.2,
-        baseAlpha: Math.random() * 0.5 + 0.25,
+        baseAlpha: Math.random() * 0.4 + 0.15,
         twinkleSpeed: Math.random() * 0.015 + 0.005,
         twinklePhase: Math.random() * Math.PI * 2,
       }));

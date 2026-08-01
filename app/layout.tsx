@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Navigation from "@/components/layout/Navigation";
 import InvitationGate from "@/components/layout/InvitationGate";
+import GlobalStarField from "@/components/layout/GlobalStarField";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${amiri.variable}`}>
       <body className="font-body bg-background text-champagne antialiased">
         <SmoothScrollProvider>
+          <GlobalStarField />
           <InvitationGate navigation={<Navigation />}>
             {children}
           </InvitationGate>

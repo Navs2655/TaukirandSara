@@ -82,7 +82,7 @@ export default function Details() {
   return (
     <section
       id="details"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-32 bg-background overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-32 overflow-hidden"
     >
       {/* Anchor for the "Timeline" nav item — same section, chronological content */}
       <span id="timeline" className="absolute -top-24" aria-hidden="true" />

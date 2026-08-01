@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import StarField from "@/components/ui/StarField";
 import CrescentMoon from "@/components/ui/CrescentMoon";
 import FloatingParticles from "@/components/ui/FloatingParticles";
 
@@ -26,15 +25,14 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6"
     >
-      {/* Layered night backdrop */}
+      {/* Layered night backdrop — transparent so the global star field shows through */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(31,92,74,0.18) 0%, rgba(9,9,9,0) 60%), #090909",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(31,92,74,0.18) 0%, rgba(9,9,9,0) 60%)",
         }}
       />
-      <StarField />
       <FloatingParticles />
 
       {/* Content */}

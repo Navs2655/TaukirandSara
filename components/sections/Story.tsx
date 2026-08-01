@@ -38,7 +38,7 @@ export default function Story() {
   return (
     <section
       id="story"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-32 bg-background overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-32 overflow-hidden"
     >
       {/* Ambient emerald wash, distinct from Hero's gold-dominant palette */}
       <div

@@ -46,7 +46,7 @@ export default function Countdown() {
   return (
     <section
       id="countdown"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-32 bg-background overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-32 overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
