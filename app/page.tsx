@@ -3,6 +3,7 @@ import Story from "@/components/sections/Story";
 import Details from "@/components/sections/Details";
 import Countdown from "@/components/sections/Countdown";
 import Blessings from "@/components/sections/Blessings";
+import RSVP from "@/components/sections/RSVP";
 import SectionDivider from "@/components/ui/SectionDivider";
 
 export default function Home() {
@@ -17,13 +18,15 @@ export default function Home() {
       <Countdown />
       <SectionDivider />
       <Blessings />
+      <SectionDivider />
+      <RSVP />
 
-      {/* Placeholder anchor — RSVP section arrives next */}
+      {/* Placeholder anchor — Closing section arrives next */}
       <section
-        id="rsvp-placeholder"
+        id="closing-placeholder"
         className="min-h-screen flex items-center justify-center text-champagne/40 text-sm tracking-luxury uppercase"
       >
-        RSVP section — coming next
+        Closing section — coming next
       </section>
     </main>
   );
