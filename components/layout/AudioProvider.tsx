@@ -43,7 +43,10 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   return (
     <AudioCtx.Provider value={{ playing, play, toggle }}>
       <audio ref={audioRef} loop preload="none">
-        <source src="/audio/nasheed.mp3" type="audio/mpeg" />
+        <source
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/audio/nasheed.mp3`}
+          type="audio/mpeg"
+        />
       </audio>
       {children}
     </AudioCtx.Provider>
