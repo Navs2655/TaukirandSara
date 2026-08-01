@@ -24,6 +24,15 @@ export default function StarField() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
+    const connection =
+      (navigator as any).connection ||
+      (navigator as any).mozConnection ||
+      (navigator as any).webkitConnection;
+    const isSlowConnection = Boolean(
+      connection?.saveData ||
+        ["slow-2g", "2g", "3g"].includes(connection?.effectiveType)
+    );
+
     let width = window.innerWidth;
     let height = window.innerHeight;
     let stars: Star[] = [];
@@ -35,7 +44,10 @@ export default function StarField() {
       canvas!.width = width;
       canvas!.height = height;
 
-      const density = width < 768 ? 70 : 130;
+      const baseDensity = width < 768 ? 70 : 130;
+      const density = isSlowConnection
+        ? Math.ceil(baseDensity / 2)
+        : baseDensity;
       stars = Array.from({ length: density }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,

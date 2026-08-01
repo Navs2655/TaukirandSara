@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { useReducedEffects } from "@/hooks/useReducedEffects";
 
 interface Particle {
   id: number;
@@ -12,16 +13,19 @@ interface Particle {
 }
 
 export default function FloatingParticles({ count = 18 }: { count?: number }) {
+  const reduced = useReducedEffects();
+  const effectiveCount = reduced ? Math.ceil(count / 2) : count;
+
   const particles: Particle[] = useMemo(
     () =>
-      Array.from({ length: count }, (_, i) => ({
+      Array.from({ length: effectiveCount }, (_, i) => ({
         id: i,
         left: `${Math.random() * 100}%`,
         size: Math.random() * 2.5 + 1,
         duration: Math.random() * 10 + 12,
         delay: Math.random() * 8,
       })),
-    [count]
+    [effectiveCount]
   );
 
   return (

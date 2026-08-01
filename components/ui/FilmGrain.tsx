@@ -1,4 +1,11 @@
+"use client";
+
+import { useReducedEffects } from "@/hooks/useReducedEffects";
+
 export default function FilmGrain() {
+  const reduced = useReducedEffects();
+  if (reduced) return null; // skip this purely decorative layer on slow connections
+
   return (
     <div
       className="fixed inset-0 pointer-events-none z-30 opacity-[0.04] animate-grain"
